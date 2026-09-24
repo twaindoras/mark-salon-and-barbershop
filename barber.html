@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mark's Salon & Barbershop</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b0b0b;
+    color: white;
+}
+
+nav {
+    height: 75px;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #333;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #f5bd32;
+}
+
+.logo span {
+    display: block;
+    color: white;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #f5bd32;
+}
+
+.nav-btn {
+    background: #f5bd32;
+    color: #111 !important;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.hero {
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    padding: 70px 7%;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.9), rgba(0,0,0,.35)),
+        url("https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1600&q=85")
+        center/cover;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.small-title {
+    color: #f5bd32;
+    letter-spacing: 4px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 7vw, 80px);
+    line-height: 1;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: #f5bd32;
+}
+
+.hero p {
+    color: #ddd;
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 25px;
+    background: #f5bd32;
+    color: #111;
+    text-decoration: none;
+    border-radius: 7px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(245,189,50,.3);
+}
+
+section {
+    padding: 80px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title p {
+    color: #f5bd32;
+    letter-spacing: 3px;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.section-title h2 {
+    font-size: 40px;
+}
+
+.services {
+    background: #f7f7f7;
+    color: #111;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,.1);
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 22px;
+}
+
+.card h3 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.price {
+    color: #d69e00;
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.book-btn {
+    width: 100%;
+    padding: 12px;
+    background: #111;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.book-btn:hover {
+    background: #f5bd32;
+    color: #111;
+}
+
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.about h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.about p {
+    color: #bbb;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.features {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.feature h3 {
+    color: #f5bd32;
+    font-size: 30px;
+}
+
+.booking {
+    background:
+        linear-gradient(rgba(0,0,0,.85), rgba(0,0,0,.85)),
+        url("https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&w=1600&q=80")
+        center/cover;
+}
+
+.booking-box {
+    max-width: 900px;
+    margin: auto;
+    background: rgba(20,20,20,.95);
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid #333;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+input, select {
+    width: 100%;
+    padding: 15px;
+    margin-top: 8px;
+    background: #222;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: white;
+    outline: none;
+}
+
+input:focus, select:focus {
+    border-color: #f5bd32;
+}
+
+label {
+    color: #ddd;
+}
+
+.submit {
+    width: 100%;
+    margin-top: 25px;
+    padding: 16px;
+    background: #f5bd32;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit:hover {
+    background: #ffd866;
+}
+
+#message {
+    text-align: center;
+    margin-top: 20px;
+    color: #4cff9a;
+    display: none;
+}
+
+.pay-box {
+    margin-top: 18px;
+    padding: 22px;
+    background: #222;
+    border: 1px solid #f5bd32;
+    border-radius: 10px;
+    color: #ddd;
+    line-height: 1.8;
+}
+
+.pay-box h3 {
+    color: #f5bd32;
+    margin-bottom: 10px;
+}
+
+.pay-box strong {
+    color: #fff;
+}
+
+.pay-amount {
+    font-size: 28px;
+    font-weight: bold;
+    color: #f5bd32;
+    margin: 8px 0;
+}
+
+.pay-box .btn {
+    margin-top: 14px;
+    background: #25d366;
+    color: #fff;
+}
+
+.gallery {
+    background: #f7f7f7;
+    color: #111;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.03);
+}
+
+.whatsapp {
+    background: #111;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+.whatsapp-box {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.whatsapp-box > p {
+    color: #bbb;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+.wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    background: #25d366;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 17px;
+    transition: .3s;
+}
+
+.wa-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(37,211,102,.35);
+}
+
+.wa-btn svg {
+    width: 26px;
+    height: 26px;
+    fill: #fff;
+}
+
+.wa-number {
+    margin-top: 18px;
+    color: #aaa;
+}
+
+
+
+.location {
+    background: #f7f7f7;
+    color: #111;
+}
+
+.location-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    align-items: stretch;
+}
+
+.location-info {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.1);
+}
+
+.location-info h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.location-info p {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+.location-info strong {
+    display: block;
+    color: #111;
+}
+
+.map-btn {
+    display: inline-block;
+    padding: 14px 22px;
+    background: #111;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.map-btn:hover {
+    background: #f5bd32;
+    color: #111;
+}
+
+.map-frame {
+    width: 100%;
+    height: 100%;
+    min-height: 380px;
+    border: 0;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.1);
+}
+
+footer {
+    background: #080808;
+    padding: 50px 7% 20px;
+    border-top: 1px solid #333;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+footer h3 {
+    color: #f5bd32;
+    margin-bottom: 15px;
+}
+
+footer p, footer a {
+    color: #aaa;
+    line-height: 2;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #f5bd32;
+}
+
+.copyright {
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    text-align: center;
+    color: #777;
+}
+
+@media(max-width: 768px) {
+
+    nav ul {
+        display: none;
+    }
+
+    .hero {
+        min-height: 550px;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .location-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .map-frame {
+        min-height: 300px;
+    }
+
+    .features {
+        flex-wrap: wrap;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        ✂ MARK'S
+        <span>SALON & BARBERSHOP</span>
+    </div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#booking">Contact</a></li>
+    </ul>
+
+    <a href="#booking" class="nav-btn">Book Now</a>
+
+</nav>
+
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            LOOK GOOD • FEEL GOOD
+        </div>
+
+        <h1>
+            Professional Hair &
+            <span>Grooming</span>
+        </h1>
+
+        <p>
+            Premium haircuts, grooming and beauty services
+            from professional stylists. Your style,
+            our priority.
+        </p>
+
+        <a href="#booking" class="btn">
+            📅 Book Appointment →
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="services" id="services">
+
+    <div class="section-title">
+        <p>OUR SERVICES</p>
+        <h2>What We Offer</h2>
+    </div>
+
+    <div class="service-grid">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=700&q=80">
+            <div class="card-content">
+                <h3>✂ Haircut</h3>
+                <p>Fresh, clean and stylish haircut.</p>
+                <div class="price">KSh 300</div>
+                <button class="book-btn" onclick="selectService('Haircut')">
+                    Book Now
+                </button>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=700&q=80">
+            <div class="card-content">
+                <h3>🧔 Beard Trim</h3>
+                <p>Keep your beard sharp and neat.</p>
+                <div class="price">KSh 150</div>
+                <button class="book-btn" onclick="selectService('Beard Trim')">
+                    Book Now
+                </button>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=700&q=80">
+            <div class="card-content">
+                <h3>💇 Hair Styling</h3>
+                <p>Professional styling for every occasion.</p>
+                <div class="price">KSh 500</div>
+                <button class="book-btn" onclick="selectService('Hair Styling')">
+                    Book Now
+                </button>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=700&q=80">
+            <div class="card-content">
+                <h3>💆 Hair Wash</h3>
+                <p>Relaxing wash for clean, healthy hair.</p>
+                <div class="price">KSh 200</div>
+                <button class="book-btn" onclick="selectService('Hair Wash')">
+                    Book Now
+                </button>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=700&q=80">
+            <div class="card-content">
+                <h3>✨ Facial & Beauty</h3>
+                <p>Refresh your skin and natural glow.</p>
+                <div class="price">KSh 800</div>
+                <button class="book-btn" onclick="selectService('Facial & Beauty')">
+                    Book Now
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="about">
+
+    <div class="about">
+
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=80">
+
+        <div>
+
+            <div class="small-title">
+                WHY CHOOSE US
+            </div>
+
+            <h2>Style That Makes You Feel Confident</h2>
+
+            <p>
+                At Mark's Salon & Barbershop, we combine modern
+                styles with professional service to give every
+                customer a look they love.
+            </p>
+
+            <p>
+                Whether you need a fresh haircut, beard trim,
+                styling or beauty treatment, our team is ready
+                to serve you.
+            </p>
+
+            <div class="features">
+
+                <div class="feature">
+                    <h3>5+</h3>
+                    <p>Services</p>
+                </div>
+
+                <div class="feature">
+                    <h3>100+</h3>
+                    <p>Customers</p>
+                </div>
+
+                <div class="feature">
+                    <h3>5★</h3>
+                    <p>Service</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="gallery" id="gallery">
+
+    <div class="section-title">
+        <p>OUR WORK</p>
+        <h2>Gallery</h2>
+    </div>
+
+    <div class="gallery-grid">
+
+        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=800&q=80">
+
+        <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=800&q=80">
+
+        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=800&q=80">
+
+        <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80">
+
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80">
+
+        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80">
+
+    </div>
+
+</section>
+
+
+<section class="whatsapp" id="whatsapp">
+
+    <div class="section-title">
+        <p>CHAT WITH US</p>
+        <h2>Book on WhatsApp</h2>
+    </div>
+
+    <div class="whatsapp-box">
+
+        <p>
+            Prefer to chat? Send us a message on WhatsApp to book
+            an appointment, ask about prices or check what time
+            we're free today.
+        </p>
+
+        <a class="wa-btn" target="_blank" rel="noopener"
+           href="https://wa.me/254717244706?text=Hello%20Mark's%20Salon%2C%20I%27d%20like%20to%20book%20an%20appointment.">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.69 8.23 8.23 0 4.54-3.69 8.24-8.23 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/>
+            </svg>
+            Chat on WhatsApp
+        </a>
+
+        <p class="wa-number">+254 717 244 706</p>
+
+
+    </div>
+
+</section>
+
+
+<section class="booking" id="booking">
+
+    <div class="section-title">
+        <p>BOOK NOW</p>
+        <h2>Make an Appointment</h2>
+    </div>
+
+    <div class="booking-box">
+
+        <form id="bookingForm">
+
+            <div class="form-grid">
+
+                <div>
+                    <label>Full Name</label>
+                    <input type="text" id="name"
+                           placeholder="Enter your name" required>
+                </div>
+
+                <div>
+                    <label>Phone Number</label>
+                    <input type="tel" id="phone"
+                           placeholder="07XXXXXXXX" required>
+                </div>
+
+                <div>
+                    <label>Service</label>
+
+                    <select id="service" required>
+
+                        <option value="">
+                            Select a service
+                        </option>
+
+                        <option>Haircut</option>
+                        <option>Beard Trim</option>
+                        <option>Hair Styling</option>
+                        <option>Hair Wash</option>
+                        <option>Facial & Beauty</option>
+
+                    </select>
+
+                </div>
+
+                <div>
+                    <label>Date</label>
+                    <input type="date" id="date" required>
+                </div>
+
+                <div>
+                    <label>Time</label>
+                    <input type="time" id="time" required>
+                </div>
+
+            </div>
+
+            <button class="submit" type="submit">
+                📅 CONFIRM APPOINTMENT
+            </button>
+
+            <div id="message">
+                ✓ Appointment booked successfully!
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<section class="location" id="location">
+
+    <div class="section-title">
+        <p>FIND US</p>
+        <h2>Our Location</h2>
+    </div>
+
+    <div class="location-grid">
+
+        <div class="location-info">
+            <h3>Visit Mark's Salon</h3>
+
+            <p>
+                <strong>📍 Address</strong>
+                Thika, Kenya
+            </p>
+
+            <p>
+                <strong>📞 Phone</strong>
+                +254 717244706
+            </p>
+
+
+            <a class="map-btn" target="_blank" rel="noopener"
+               href="https://www.google.com/maps/dir/?api=1&destination=Thika,Kenya">
+                Get Directions
+            </a>
+        </div>
+
+        <iframe class="map-frame"
+                title="Mark's Salon location on Google Maps"
+                src="https://www.google.com/maps?q=Thika,Kenya&output=embed"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+            <h3>✂ MARK'S SALON</h3>
+
+            <p>
+                Professional hair, grooming and beauty
+                services for everyone.
+            </p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+
+            <p><a href="#home">Home</a></p>
+            <p><a href="#services">Services</a></p>
+            <p><a href="#about">About</a></p>
+            <p><a href="#gallery">Gallery</a></p>
+        </div>
+
+        <div>
+            <h3>Contact</h3>
+
+            <p>📍 Thika, Kenya</p>
+            <p>📞 +254 717244706</p>
+            <p>✉ marksalon@gmail.com</p>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 Mark's Salon & Barbershop. All Rights Reserved.
+    </div>
+
+</footer>
+
+
+
+<script>
+
+function selectService(service) {
+
+    document.getElementById("service").value = service;
+
+    document.getElementById("booking")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+}
+
+
+var WHATSAPP_NUMBER = "254717244706";
+var MPESA_NUMBER = "0717244706";
+
+var PRICES = {
+    "Haircut": 300,
+    "Beard Trim": 150,
+    "Hair Styling": 500,
+    "Hair Wash": 200,
+    "Facial & Beauty": 800
+};
+
+function escapeHtml(text) {
+    var div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+document.getElementById("bookingForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    var name = document.getElementById("name").value;
+    var phone = document.getElementById("phone").value;
+    var service = document.getElementById("service").value;
+    var date = document.getElementById("date").value;
+    var time = document.getElementById("time").value;
+    var price = PRICES[service] || 0;
+
+    var text =
+        "NEW BOOKING - Mark's Salon\n" +
+        "Name: " + name + "\n" +
+        "Phone: " + phone + "\n" +
+        "Service: " + service + " (KSh " + price + ")\n" +
+        "Date: " + date + "\n" +
+        "Time: " + time + "\n" +
+        "Payment: I will pay KSh " + price + " via M-Pesa to " + MPESA_NUMBER;
+
+    var waLink = "https://wa.me/" + WHATSAPP_NUMBER +
+                 "?text=" + encodeURIComponent(text);
+
+    var message = document.getElementById("message");
+
+    message.innerHTML =
+        "✓ Thank you " + escapeHtml(name) + "! Your appointment request is ready." +
+        '<div class="pay-box">' +
+            "<h3>💳 Complete Your Payment</h3>" +
+            "Service: <strong>" + escapeHtml(service) + "</strong><br>" +
+            "Amount to pay:" +
+            '<div class="pay-amount">KSh ' + price + "</div>" +
+            "Open M-Pesa → <strong>Send Money</strong> → enter " +
+            "<strong>" + MPESA_NUMBER + "</strong> → amount <strong>KSh " + price + "</strong>.<br>" +
+            "Then send your booking on WhatsApp so we can confirm your slot." +
+            '<br><a class="btn" target="_blank" rel="noopener" href="' + waLink + '">' +
+            "Send Booking on WhatsApp</a>" +
+        "</div>";
+
+    message.style.display = "block";
+
+    window.open(waLink, "_blank");
+
+    this.reset();
+
+});
+
+</script>
+
+</body>
+</html>
